@@ -1,191 +1,167 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <title>김현중 | 개발을 이해하는 IT 서비스 기획자</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김현중 | 테크니컬 프로덕트 매니저</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #818cf8;
+            --accent-hover: #6366f1;
+            --border: #334155;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Inter', 'Noto Sans KR', sans-serif; }
+        a { color: var(--accent); text-decoration: none; transition: 0.2s; }
+        a:hover { color: var(--accent-hover); text-decoration: underline; }
+        
+        /* Layout */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+        section { padding: 60px 0; border-bottom: 1px solid var(--border); }
+        section:last-child { border-bottom: none; }
 
-  <!-- 폰트 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700&display=swap" rel="stylesheet">
+        /* Typography */
+        h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
+        h2 { font-size: 1.25rem; color: var(--text-secondary); font-weight: 400; margin-bottom: 2rem; }
+        h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; }
+        h3::before { content: ''; width: 4px; height: 24px; background: var(--accent); margin-right: 12px; border-radius: 2px; }
+        p { margin-bottom: 1rem; color: #cbd5e1; }
+        
+        /* Hero */
+        .hero { 
+            min-height: 80vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            padding-top: 60px;
+        }
+        .hero h1 { background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-desc { font-size: 1.1rem; max-width: 600px; color: var(--text-secondary); }
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
+        /* Cards */
+        .card { background: var(--bg-secondary); border-radius: 12px; padding: 32px; border: 1px solid var(--border); margin-bottom: 24px; }
+        .card h4 { font-size: 1.2rem; margin-bottom: 8px; color: #fff; }
+        .card .meta { font-size: 0.9rem; color: var(--accent); margin-bottom: 16px; display: block; }
+        
+        /* Lists */
+        ul { list-style: none; padding: 0; }
+        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: #cbd5e1; }
+        li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
 
-    body {
-      background-color: #0f172a;
-      color: #e5e7eb;
-      line-height: 1.6;
-    }
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .skill-item h4 { font-size: 1rem; color: #fff; margin-bottom: 8px; }
+        .skill-item p { font-size: 0.9rem; color: var(--text-secondary); }
 
-    header {
-      min-height: 100vh;
-      background: linear-gradient(rgba(15,23,42,0.85), rgba(15,23,42,0.95)),
-                  url("https://images.unsplash.com/photo-1498050108023-c5249f4df085") center/cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 40px;
-    }
-
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-
-    header h2 {
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: #c7d2fe;
-      margin-bottom: 24px;
-    }
-
-    header p {
-      max-width: 700px;
-      font-size: 1.05rem;
-      color: #d1d5db;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-
-    section h3 {
-      font-size: 1.6rem;
-      margin-bottom: 24px;
-      border-left: 5px solid #6366f1;
-      padding-left: 12px;
-    }
-
-    ul {
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 10px;
-    }
-
-    .card {
-      background-color: #111827;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9rem;
-      color: #9ca3af;
-    }
-
-    a {
-      color: #818cf8;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+        /* Footer */
+        footer { text-align: center; padding: 60px 0; color: var(--text-secondary); font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero { min-height: 60vh; }
+        }
+    </style>
 </head>
-
 <body>
+    <div class="container">
+        <!-- HERO -->
+        <header class="hero">
+            <h1>비즈니스 가치를 기술로 실현하는<br>테크니컬 프로덕트 매니저, 김현중입니다.</h1>
+            <p class="hero-desc">
+                추상적인 아이디어를 구체적인 데이터 흐름과 시스템 구조로 번역하여,<br>
+                개발자와 비즈니스 사이의 간극을 좁히고 실행 가능한 제품을 만듭니다.
+            </p>
+        </header>
 
-  <!-- HERO -->
-  <header>
-    <h1>김현중</h1>
-    <h2>개발을 이해하는 IT 서비스 기획자</h2>
-    <p>
-      아이디어에 그치지 않고<br>
-      기획 → 구조 설계 → 화면 흐름 → 기술 선택까지 연결하는<br>
-      기술 기반 서비스 기획을 지향합니다.
-    </p>
-  </header>
+        <!-- ABOUT (Core Value) -->
+        <section>
+            <h3>핵심 역량</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h4>🏗 구조적 사고 (System Design)</h4>
+                    <p>기능 정의를 넘어 DB 구조와 API 흐름까지 고려하여, 개발 단계의 불확실성을 최소화합니다.</p>
+                </div>
+                <div class="skill-item">
+                    <h4>🤝 기술 커뮤니케이션</h4>
+                    <p>개발자의 언어로 요구사항을 전달하고, 비즈니스 임팩트를 기준으로 기술 의사결정을 조율합니다.</p>
+                </div>
+                <div class="skill-item">
+                    <h4>📊 데이터 기반 의사결정</h4>
+                    <p>직관이 아닌 수집 가능한 데이터 지표를 설정하고, 이를 바탕으로 서비스 방향성을 검증합니다.</p>
+                </div>
+            </div>
+        </section>
 
-  <!-- ABOUT -->
-  <section>
-    <h3>소개</h3>
-    <div class="card">
-      <p>
-        저는 개발 구조를 이해하고, 기술 제약을 고려해
-        <strong>실제로 구현 가능한 서비스</strong>를 설계하는 IT 서비스 기획자입니다.
-      </p>
-      <br />
-      <ul>
-        <li>데이터가 어디서 오고 어떻게 흐르는지</li>
-        <li>개발자가 무엇을 어려워하는지</li>
-        <li>운영 단계에서 어떤 문제가 생기는지</li>
-      </ul>
-      <br />
-      <p>
-        위 기준을 바탕으로 기획서, 제안서, 발표자료를 직접 작성하며
-        다수의 공공·기술 기반 공모전에 참여했습니다.
-      </p>
+        <!-- PROJECTS -->
+        <section>
+            <h3>주요 프로젝트 사례</h3>
+            
+            <div class="card">
+                <h4>RealWalk: 실제 보행 동선 기반 상권 분석</h4>
+                <span class="meta">담당: PM & 데이터 구조 설계 (2023) | 기술: Python, PostGIS, FastAPI</span>
+                <p><strong>문제 정의:</strong> 기존 반경 기준 상권 분석은 언덕이나 하천 같은 지형지물을 반영하지 못해 정확도가 낮았습니다.</p>
+                <p><strong>해결 방안:</strong> OpenRouteService API를 활용해 실제 도보 10분 거리의 등시선(Isochrone)을 시각화하고, 해당 영역 내 상권 데이터를 매핑했습니다.</p>
+                <ul>
+                    <li>GIS 데이터를 활용한 공간 DB(PostGIS) 스키마 설계 및 쿼리 최적화</li>
+                    <li>사용자 위치 기반 동적 쿼리 처리를 위한 API 명세서 작성</li>
+                    <li>개발팀 병목 해소를 위한 데이터 파이프라인 전처리 스크립트 작성 (Python)</li>
+                </ul>
+                <div style="margin-top: 16px;">
+                    <a href="https://github.com/kimhj0707/realwalk" target="_blank">GitHub 저장소 확인하기 →</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4>WeatherFlick: 날씨/상황 기반 여행 콘텐츠 추천</h4>
+                <span class="meta">담당: 서비스 기획 (2023) | 기술: React, Spring Boot, MySQL</span>
+                <p><strong>문제 정의:</strong> 단순 지역 검색은 여행자의 구체적인 상황(비 오는 날, 아이와 함께 등)을 반영하기 어려웠습니다.</p>
+                <p><strong>해결 방안:</strong> 공공데이터포털 날씨 API와 태그 기반 추천 로직을 결합하여, 실시간 상황에 맞는 여행지를 큐레이션했습니다.</p>
+                <ul>
+                    <li>프론트엔드(UI/UX)와 백엔드(Server) 간 책임 분리를 고려한 화면 설계서(Wireframe) 작성</li>
+                    <li>여행지 데이터의 카테고리 분류 체계 수립 및 메타데이터 구조화</li>
+                    <li>어드민 페이지 기획을 통해 운영 효율성 제고</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TECH STACK -->
+        <section>
+            <h3>보유 기술 (Tech Stack)</h3>
+            <div class="card" style="display: flex; gap: 24px; flex-wrap: wrap;">
+                <div>
+                    <strong>아키텍처 (Architecture)</strong><br>
+                    <span style="color:var(--text-secondary)">REST API, MVC Pattern, MSA 개념 이해</span>
+                </div>
+                <div>
+                    <strong>데이터 (Data & DB)</strong><br>
+                    <span style="color:var(--text-secondary)">SQL (MySQL, PostgreSQL), PostGIS, ERD 설계</span>
+                </div>
+                <div>
+                    <strong>도구 (Tools)</strong><br>
+                    <span style="color:var(--text-secondary)">Figma, Git/GitHub, Jira, Postman</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div style="margin-bottom: 12px;">© 2026 Kim Hyun-joong.</div>
+            <a href="https://github.com/kimhj0707" target="_blank">GitHub 프로필 방문</a>
+        </footer>
     </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section>
-    <h3>기술 이해 영역</h3>
-    <div class="card">
-      <ul>
-        <li>웹 서비스 구조 (Frontend / Backend 분리)</li>
-        <li>REST API 및 데이터 흐름 이해</li>
-        <li>PostgreSQL / 공간 데이터(PostGIS) 개념</li>
-        <li>AWS 기본 인프라 구조 (EC2, S3, RDS)</li>
-        <li>Git / GitHub 협업 흐름</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section>
-    <h3>대표 기획 프로젝트</h3>
-
-    <div class="card">
-      <h4>RealWalk</h4>
-      <p>실제 보행 동선 기반 상권 분석 서비스</p>
-      <ul>
-        <li>서비스 컨셉 및 구조 설계</li>
-        <li>공공데이터 + GIS 활용 기획</li>
-        <li>데이터 수집 → DB → API → 화면 흐름 정의</li>
-      </ul>
-      <p>
-        🔗 <a href="https://github.com/kimhj0707/realwalk" target="_blank">GitHub Repository</a>
-      </p>
-    </div>
-
-    <div class="card">
-      <h4>WeatherFlick</h4>
-      <p>날씨 기반 여행지 추천 서비스</p>
-      <ul>
-        <li>서비스 기능 정의 및 구조 설계</li>
-        <li>프론트엔드 / 백엔드 역할 분리 기획</li>
-        <li>관리자·배치 시스템까지 고려한 설계</li>
-      </ul>
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    © 2026 김현중 · IT Service Planner  
-    <br />
-    GitHub: <a href="https://github.com/kimhj0707" target="_blank">github.com/kimhj0707</a>
-  </footer>
-
 </body>
 </html>
