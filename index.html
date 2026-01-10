@@ -1,167 +1,155 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>김현중 | 테크니컬 프로덕트 매니저</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #818cf8;
-            --accent-hover: #6366f1;
-            --border: #334155;
-        }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Inter', 'Noto Sans KR', sans-serif; }
-        a { color: var(--accent); text-decoration: none; transition: 0.2s; }
-        a:hover { color: var(--accent-hover); text-decoration: underline; }
-        
-        /* Layout */
-        .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
-        section { padding: 60px 0; border-bottom: 1px solid var(--border); }
-        section:last-child { border-bottom: none; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>김현중 | IT 서비스 기획자</title>
 
-        /* Typography */
-        h1 { font-size: 3rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 1rem; }
-        h2 { font-size: 1.25rem; color: var(--text-secondary); font-weight: 400; margin-bottom: 2rem; }
-        h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; display: flex; align-items: center; }
-        h3::before { content: ''; width: 4px; height: 24px; background: var(--accent); margin-right: 12px; border-radius: 2px; }
-        p { margin-bottom: 1rem; color: #cbd5e1; }
-        
-        /* Hero */
-        .hero { 
-            min-height: 80vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            padding-top: 60px;
-        }
-        .hero h1 { background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero-desc { font-size: 1.1rem; max-width: 600px; color: var(--text-secondary); }
-
-        /* Cards */
-        .card { background: var(--bg-secondary); border-radius: 12px; padding: 32px; border: 1px solid var(--border); margin-bottom: 24px; }
-        .card h4 { font-size: 1.2rem; margin-bottom: 8px; color: #fff; }
-        .card .meta { font-size: 0.9rem; color: var(--accent); margin-bottom: 16px; display: block; }
-        
-        /* Lists */
-        ul { list-style: none; padding: 0; }
-        li { position: relative; padding-left: 20px; margin-bottom: 8px; color: #cbd5e1; }
-        li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
-
-        /* Skills Grid */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .skill-item h4 { font-size: 1rem; color: #fff; margin-bottom: 8px; }
-        .skill-item p { font-size: 0.9rem; color: var(--text-secondary); }
-
-        /* Footer */
-        footer { text-align: center; padding: 60px 0; color: var(--text-secondary); font-size: 0.9rem; }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 2.2rem; }
-            .hero { min-height: 60vh; }
-        }
-    </style>
+  <!-- 스타일은 나중에 Tailwind나 CSS로 교체 가능 -->
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f0f10;
+      color: #eaeaea;
+      line-height: 1.6;
+    }
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+    section {
+      margin-bottom: 96px;
+    }
+    h1 { font-size: 40px; margin-bottom: 16px; }
+    h2 { font-size: 26px; margin-bottom: 24px; }
+    h3 { font-size: 20px; margin-bottom: 8px; }
+    p { max-width: 720px; }
+    .muted { color: #a0a0a0; }
+    .buttons a {
+      display: inline-block;
+      margin-right: 12px;
+      padding: 10px 16px;
+      border: 1px solid #333;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #eaeaea;
+    }
+    .card {
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- HERO -->
-        <header class="hero">
-            <h1>비즈니스 가치를 기술로 실현하는<br>테크니컬 프로덕트 매니저, 김현중입니다.</h1>
-            <p class="hero-desc">
-                추상적인 아이디어를 구체적인 데이터 흐름과 시스템 구조로 번역하여,<br>
-                개발자와 비즈니스 사이의 간극을 좁히고 실행 가능한 제품을 만듭니다.
-            </p>
-        </header>
+<main>
 
-        <!-- ABOUT (Core Value) -->
-        <section>
-            <h3>핵심 역량</h3>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h4>🏗 구조적 사고 (System Design)</h4>
-                    <p>기능 정의를 넘어 DB 구조와 API 흐름까지 고려하여, 개발 단계의 불확실성을 최소화합니다.</p>
-                </div>
-                <div class="skill-item">
-                    <h4>🤝 기술 커뮤니케이션</h4>
-                    <p>개발자의 언어로 요구사항을 전달하고, 비즈니스 임팩트를 기준으로 기술 의사결정을 조율합니다.</p>
-                </div>
-                <div class="skill-item">
-                    <h4>📊 데이터 기반 의사결정</h4>
-                    <p>직관이 아닌 수집 가능한 데이터 지표를 설정하고, 이를 바탕으로 서비스 방향성을 검증합니다.</p>
-                </div>
-            </div>
-        </section>
+  <!-- 1. HERO -->
+  <section id="hero">
+    <h1>김현중</h1>
+    <p class="muted">개발을 이해하는 IT 서비스 기획자</p>
 
-        <!-- PROJECTS -->
-        <section>
-            <h3>주요 프로젝트 사례</h3>
-            
-            <div class="card">
-                <h4>RealWalk: 실제 보행 동선 기반 상권 분석</h4>
-                <span class="meta">담당: PM & 데이터 구조 설계 (2023) | 기술: Python, PostGIS, FastAPI</span>
-                <p><strong>문제 정의:</strong> 기존 반경 기준 상권 분석은 언덕이나 하천 같은 지형지물을 반영하지 못해 정확도가 낮았습니다.</p>
-                <p><strong>해결 방안:</strong> OpenRouteService API를 활용해 실제 도보 10분 거리의 등시선(Isochrone)을 시각화하고, 해당 영역 내 상권 데이터를 매핑했습니다.</p>
-                <ul>
-                    <li>GIS 데이터를 활용한 공간 DB(PostGIS) 스키마 설계 및 쿼리 최적화</li>
-                    <li>사용자 위치 기반 동적 쿼리 처리를 위한 API 명세서 작성</li>
-                    <li>개발팀 병목 해소를 위한 데이터 파이프라인 전처리 스크립트 작성 (Python)</li>
-                </ul>
-                <div style="margin-top: 16px;">
-                    <a href="https://github.com/kimhj0707/realwalk" target="_blank">GitHub 저장소 확인하기 →</a>
-                </div>
-            </div>
+    <p>
+      개발 구조와 현장 경험을 기반으로,<br/>
+      구현 가능한 서비스 기획을 설계합니다.
+    </p>
 
-            <div class="card">
-                <h4>WeatherFlick: 날씨/상황 기반 여행 콘텐츠 추천</h4>
-                <span class="meta">담당: 서비스 기획 (2023) | 기술: React, Spring Boot, MySQL</span>
-                <p><strong>문제 정의:</strong> 단순 지역 검색은 여행자의 구체적인 상황(비 오는 날, 아이와 함께 등)을 반영하기 어려웠습니다.</p>
-                <p><strong>해결 방안:</strong> 공공데이터포털 날씨 API와 태그 기반 추천 로직을 결합하여, 실시간 상황에 맞는 여행지를 큐레이션했습니다.</p>
-                <ul>
-                    <li>프론트엔드(UI/UX)와 백엔드(Server) 간 책임 분리를 고려한 화면 설계서(Wireframe) 작성</li>
-                    <li>여행지 데이터의 카테고리 분류 체계 수립 및 메타데이터 구조화</li>
-                    <li>어드민 페이지 기획을 통해 운영 효율성 제고</li>
-                </ul>
-            </div>
-        </section>
-
-        <!-- TECH STACK -->
-        <section>
-            <h3>보유 기술 (Tech Stack)</h3>
-            <div class="card" style="display: flex; gap: 24px; flex-wrap: wrap;">
-                <div>
-                    <strong>아키텍처 (Architecture)</strong><br>
-                    <span style="color:var(--text-secondary)">REST API, MVC Pattern, MSA 개념 이해</span>
-                </div>
-                <div>
-                    <strong>데이터 (Data & DB)</strong><br>
-                    <span style="color:var(--text-secondary)">SQL (MySQL, PostgreSQL), PostGIS, ERD 설계</span>
-                </div>
-                <div>
-                    <strong>도구 (Tools)</strong><br>
-                    <span style="color:var(--text-secondary)">Figma, Git/GitHub, Jira, Postman</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer>
-            <div style="margin-bottom: 12px;">© 2026 Kim Hyun-joong.</div>
-            <a href="https://github.com/kimhj0707" target="_blank">GitHub 프로필 방문</a>
-        </footer>
+    <div class="buttons">
+      <a href="https://github.com/kimhj0707" target="_blank">GitHub</a>
+      <a href="#projects">프로젝트 보기</a>
     </div>
+  </section>
+
+  <!-- 2. ABOUT -->
+  <section id="about">
+    <h2>About</h2>
+    <p>
+      웹·클라우드 기반 프로젝트를 직접 기획하고 구현하며
+      기술 구조를 이해한 상태에서 서비스를 설계해왔습니다.
+      소상공인·영업·현장 경험을 통해 사용자와 운영자의 관점을 함께 고려합니다.
+    </p>
+  </section>
+
+  <!-- 3. CORE SKILLS -->
+  <section id="skills-core">
+    <h2>Core Skills</h2>
+
+    <div class="card">
+      요구사항을 기능·데이터 단위로 분해해 개발 가능한 구조로 설계
+    </div>
+    <div class="card">
+      화면 흐름·API·DB 관계를 연결해 서비스 구조 정의
+    </div>
+    <div class="card">
+      데이터 수집·처리 흐름을 고려한 분석 기반 기획
+    </div>
+    <div class="card">
+      현장 운영 경험을 반영한 사용자 중심 문제 정의
+    </div>
+  </section>
+
+  <!-- 4. PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="card">
+      <h3>RealWalk</h3>
+      <p class="muted">GIS 기반 정밀 상권 분석 서비스</p>
+
+      <p><strong>문제</strong><br/>
+        기존 상권 분석이 실제 보행 특성을 반영하지 못함
+      </p>
+
+      <p><strong>내 역할</strong><br/>
+        서비스 기획 및 데이터 구조 설계
+      </p>
+
+      <p><strong>해결</strong><br/>
+        건물·POI·보행 데이터를 결합한 분석 구조 설계
+      </p>
+
+      <p><strong>결과</strong><br/>
+        금천구 기준 약 15,000개 건물 데이터 분석
+      </p>
+
+      <div class="buttons">
+        <a href="#">GitHub</a>
+        <a href="#">Docs</a>
+      </div>
+    </div>
+
+    <!-- 프로젝트 카드 복사해서 2~3개까지만 -->
+  </section>
+
+  <!-- 5. EXPERIENCE -->
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <p><strong>음식점·카페 운영</strong><br/>
+      고객 동선, 운영 프로세스를 직접 경험하며 사용자 관점 이해
+    </p>
+
+    <p><strong>영업 경험</strong><br/>
+      고객 니즈 파악과 신뢰 기반 커뮤니케이션 경험
+    </p>
+
+    <p><strong>응급 이송 업무</strong><br/>
+      절차 준수와 상황 판단이 중요한 환경에서의 책임감 있는 대응
+    </p>
+  </section>
+
+  <!-- 6. CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: hj56749254@gmail.com</p>
+    <p>GitHub: https://github.com/kimhj0707</p>
+    <p>Portfolio: https://kimhj0707.github.io</p>
+  </section>
+
+</main>
 </body>
 </html>
