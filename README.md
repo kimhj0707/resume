@@ -1,7 +1,7 @@
 # 김현중 | 개발을 이해하는 IT 서비스 기획자
 
 📍 서울, 대한민국  
-📧 이메일: hj56749254@email.com  
+📧 이메일: hj56749254@gmail.com  
 🐙 GitHub: https://github.com/kimhj0707 
 🌐 Resume / Portfolio: https://kimhj0707.github.io/resume
 
