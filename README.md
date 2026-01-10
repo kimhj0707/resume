@@ -3,7 +3,8 @@
 📍 서울, 대한민국  
 📧 이메일: hj56749254@gmail.com  
 🐙 GitHub: https://github.com/kimhj0707 
-🌐 Resume / Portfolio: https://kimhj0707.github.io/resume
+🌐 Resume / Portfolio: https://kimhj0707.github.io
+
 
 ---
 
