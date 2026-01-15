@@ -7,40 +7,163 @@
 
   <!-- 스타일은 나중에 Tailwind나 CSS로 교체 가능 -->
   <style>
+    :root {
+      /* Color Palette */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --primary: #2563eb;
+      --text-main: #111827;
+      --text-secondary: #4b5563;
+      --text-muted: #6b7280;
+      --card-bg: #ffffff;
+      --card-border: #e5e7eb;
+      --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --card-hover-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+      /* Typography */
+      --font-family: 'Pretendard', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Spacing & Radius */
+      --spacing-unit: 8px;
+      --border-radius: 12px;
+    }
+
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #0f0f10;
-      color: #eaeaea;
-      line-height: 1.6;
+      font-family: var(--font-family);
+      background: var(--bg-primary);
+      color: var(--text-main);
+      line-height: 1.7;
     }
     main {
       max-width: 960px;
       margin: 0 auto;
-      padding: 80px 24px;
+      padding: calc(var(--spacing-unit) * 10) calc(var(--spacing-unit) * 3); /* 80px 24px */
     }
     section {
-      margin-bottom: 96px;
+      margin-bottom: calc(var(--spacing-unit) * 12); /* 96px */
+      background: var(--bg-secondary);
+      padding: calc(var(--spacing-unit) * 6);
+      border-radius: var(--border-radius);
+      border: 1px solid var(--card-border);
     }
-    h1 { font-size: 40px; margin-bottom: 16px; }
-    h2 { font-size: 26px; margin-bottom: 24px; }
-    h3 { font-size: 20px; margin-bottom: 8px; }
-    p { max-width: 720px; }
-    .muted { color: #a0a0a0; }
+
+    h1 { font-size: 40px; margin-bottom: 16px; line-height: 1.2; }
+    h2 { 
+      font-size: 28px; 
+      margin-bottom: 32px;
+      color: var(--text-main);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 12px;
+    }
+    h3 { font-size: 22px; margin-bottom: 12px; color: var(--text-main); }
+    p { max-width: 720px; margin-bottom: 16px; }
+    
+    .muted { color: var(--text-muted); }
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
     .buttons a {
       display: inline-block;
       margin-right: 12px;
-      padding: 10px 16px;
-      border: 1px solid #333;
-      border-radius: 8px;
+      padding: 12px 20px;
+      border: 1px solid transparent;
+      border-radius: var(--border-radius);
       text-decoration: none;
-      color: #eaeaea;
+      font-weight: 500;
+      transition: all 0.2s ease-in-out;
     }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-secondary);
+      border-color: var(--card-border);
+    }
+    .btn-secondary:hover {
+      background: var(--bg-primary);
+      color: var(--text-main);
+      text-decoration: none;
+    }
+
     .card {
-      border: 1px solid #222;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 32px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius);
+      padding: calc(var(--spacing-unit) * 4); /* 32px */
+      margin-bottom: calc(var(--spacing-unit) * 4); /* 32px */
+      transition: box-shadow 0.2s ease-in-out;
+    }
+    .card:hover {
+      box-shadow: var(--card-hover-shadow);
+    }
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .skill-chip-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .skill-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 16px;
+      background-color: var(--bg-primary);
+      border: 1px solid var(--card-border);
+      border-radius: var(--border-radius);
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    }
+    .skill-chip:hover {
+      background-color: #eef2ff;
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .skill-chip .icon {
+      margin-right: 8px;
+      color: var(--primary);
+    }
+    .skill-chip .description {
+      display: none;
+      margin-top: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-secondary);
+    }
+    .skill-chip:hover .description {
+      display: block;
+    }
+
+    .project-card {
+      margin-bottom: 48px;
+    }
+    .project-card ul {
+      padding-left: 20px;
+      list-style: none;
+    }
+    .project-card li {
+      margin-bottom: 12px;
+    }
+    .project-card li strong {
+      display: inline-block;
+      width: 80px;
+      color: var(--text-secondary);
     }
   </style>
 </head>
@@ -49,46 +172,52 @@
 <main>
 
   <!-- 1. HERO -->
-  <section id="hero">
-    <h1>김현중</h1>
-    <p class="muted">IT 서비스 기획자 (Technical PM)</p>
+  <section id="hero" style="background: transparent; border: none; text-align: center; padding-top: 40px; padding-bottom: 40px;">
+    <h1 style="font-size: 48px; font-weight: 700;">김현중</h1>
+    <p class="muted" style="font-size: 20px;">IT 서비스 기획자 (Technical PM)</p>
 
-    <p>
-      개발을 이해하는 IT 서비스 기획자<br/>
-      개발 구조(API·DB·배포)와 현장 경험을 기반으로, 구현 가능한 서비스 기획을 설계합니다.
+    <p style="font-size: 18px; max-width: 600px; margin: 24px auto;">
+      개발을 이해하는 IT 서비스 기획자. 개발 구조와 현장 경험을 기반으로, 구현 가능한 서비스 기획을 설계합니다.
     </p>
 
-    <div class="buttons">
-      <a href="https.github.com/kimhj0707" target="_blank">GitHub</a>
-      <a href="#projects">프로젝트 보기</a>
+    <div class="buttons" style="margin-top: 32px;">
+      <a href="https://github.com/kimhj0707" target="_blank" class="btn-primary">GitHub</a>
+      <a href="#projects" class="btn-secondary">프로젝트 보기</a>
     </div>
   </section>
 
   <!-- 2. ABOUT -->
   <section id="about">
     <h2>About</h2>
-    <p>
-      단순 아이디어가 아닌, 기능·데이터·운영 흐름까지 고려한 구조 설계를 지향합니다.<br/>
-      실제 개발 경험을 바탕으로 개발자와 같은 언어로 소통합니다.<br/>
-      소상공인·영업·현장 경험을 통해 사용자와 운영자의 관점을 동시에 이해합니다.
-    </p>
+    <p>단순 아이디어가 아닌, 기능·데이터·운영 흐름까지 고려한 구조 설계를 지향합니다.</p>
+    <p>실제 개발 경험을 바탕으로 개발자와 같은 언어로 소통합니다.</p>
+    <p>소상공인·영업·현장 경험을 통해 사용자와 운영자의 관점을 동시에 이해합니다.</p>
   </section>
 
   <!-- 3. CORE SKILLS -->
   <section id="skills-core">
     <h2>Core Skills</h2>
-
-    <div class="card">
-      요구사항을 기능 단위로 분해해 <strong>개발 가능한 명세와 구조로 설계</strong>
-    </div>
-    <div class="card">
-      화면 흐름·API·DB 관계를 연결한 <strong>서비스 구조 설계</strong>
-    </div>
-    <div class="card">
-      데이터 수집·처리 흐름을 고려한 <strong>분석 기반 기획</strong>
-    </div>
-    <div class="card">
-      현장 운영 경험을 반영한 <strong>사용자 중심 문제 정의</strong>
+    <div class="skill-chip-container">
+      <div class="skill-chip">
+        <span class="icon">&#10003;</span>
+        <span>요구사항 구조화</span>
+        <span class="description">개발 가능한 명세와 구조로 설계</span>
+      </div>
+      <div class="skill-chip">
+        <span class="icon">&#10003;</span>
+        <span>API·DB 흐름 설계</span>
+        <span class="description">화면 흐름·API·DB 관계를 연결</span>
+      </div>
+      <div class="skill-chip">
+        <span class="icon">&#10003;</span>
+        <span>데이터 기반 기획</span>
+        <span class="description">데이터 수집·처리 흐름을 고려</span>
+      </div>
+      <div class="skill-chip">
+        <span class="icon">&#10003;</span>
+        <span>운영 관점 문제 정의</span>
+        <span class="description">현장 운영 경험을 반영</span>
+      </div>
     </div>
   </section>
 
@@ -96,39 +225,42 @@
   <section id="projects">
     <h2>Projects</h2>
 
-    <div class="card">
-      <h3>RealWalk</h3>
-      <p class="muted">GIS 기반 정밀 상권 분석 서비스</p>
-      <p><strong>문제 정의:</strong> 기존 상권 분석 서비스는 행정구역·직선거리 중심으로 실제 상권 특성을 반영하기 어려움</p>
-      <p><strong>내 역할:</strong> 서비스 기획, 데이터 요구사항 정의, 분석 구조 설계, MVP 화면 흐름 기획</p>
-      <p><strong>해결 방식:</strong> 건물·POI·보행 데이터를 결합한 분석 시나리오 설계 / 지도 기반 시각화 구조 기획</p>
-      <p><strong>결과:</strong> 금천구 기준 건물 약 15,000개 데이터 적재 / POI 수집 자동화 구조 설계</p>
-      <div class="buttons">
-        <a href="https://github.com/kimhj0707/realwalk" target="_blank">GitHub</a>
+    <div class="card project-card">
+      <h3>RealWalk <span class="muted" style="font-size: 16px; font-weight: 500;">| GIS 기반 정밀 상권 분석 서비스</span></h3>
+      <ul>
+        <li><strong>문제 정의</strong> 기존 상권 분석 서비스는 행정구역·직선거리 중심으로 실제 상권 특성을 반영하기 어려움</li>
+        <li><strong>내 역할</strong> 서비스 기획, 데이터 요구사항 정의, 분석 구조 설계, MVP 화면 흐름 기획</li>
+        <li><strong>해결 방식</strong> 건물·POI·보행 데이터를 결합한 분석 시나리오 설계 / 지도 기반 시각화 구조 기획</li>
+        <li><strong>결과</strong> 금천구 기준 건물 약 15,000개 데이터 적재 / POI 수집 자동화 구조 설계</li>
+      </ul>
+      <div class="buttons" style="margin-top: 24px;">
+        <a href="https://github.com/kimhj0707/realwalk" target="_blank" class="btn-primary">GitHub</a>
       </div>
     </div>
 
-    <div class="card">
-      <h3>WeatherFlick</h3>
-      <p class="muted">날씨 기반 여행지 추천 서비스</p>
-      <p><strong>문제 정의:</strong> 사용자 상황(날씨)에 맞는 추천과 운영 관점의 관리 기능이 동시에 필요</p>
-      <p><strong>내 역할:</strong> 서비스 기획, 기능 정의, 시스템 구성(프론트/백/배치/관리자) 구조 설계</p>
-      <p><strong>해결 방식:</strong> 추천 로직 입력·출력 정의 / 관리자 운영을 고려한 구조 분리</p>
-      <p><strong>결과:</strong> 마이크로서비스 구조 기반 설계 경험 / 발표용 기획·구조 문서 작성</p>
-      <div class="buttons">
-        <a href="https://github.com/kimhj0707/weather-flick" target="_blank">GitHub</a>
+    <div class="card project-card">
+      <h3>WeatherFlick <span class="muted" style="font-size: 16px; font-weight: 500;">| 날씨 기반 여행지 추천 서비스</span></h3>
+      <ul>
+        <li><strong>문제 정의</strong> 사용자 상황(날씨)에 맞는 추천과 운영 관점의 관리 기능이 동시에 필요</li>
+        <li><strong>내 역할</strong> 서비스 기획, 기능 정의, 시스템 구성(프론트/백/배치/관리자) 구조 설계</li>
+        <li><strong>해결 방식</strong> 추천 로직 입력·출력 정의 / 관리자 운영을 고려한 구조 분리</li>
+        <li><strong>결과</strong> 마이크로서비스 구조 기반 설계 경험 / 발표용 기획·구조 문서 작성</li>
+      </ul>
+      <div class="buttons" style="margin-top: 24px;">
+        <a href="https://github.com/kimhj0707/weather-flick" target="_blank" class="btn-primary">GitHub</a>
       </div>
     </div>
 
-    <div class="card">
-      <h3>Venti Recipe</h3>
-      <p class="muted">카페 레시피 관리 PWA</p>
-      <p><strong>문제 정의:</strong> 종이 레시피의 검색 불편과 옵션(당도 등) 적용의 비일관성</p>
-      <p><strong>내 역할:</strong> 요구사항 정의, 레시피 데이터 구조 설계, 검색/옵션 흐름 기획</p>
-      <p><strong>해결 방식:</strong> JSON 기반 레시피 데이터 표준화 / 모바일 사용성을 고려한 UI 구성</p>
-      <p><strong>결과:</strong> 실제 매장 사용을 전제로 한 PWA 형태 설계</p>
-      <div class="buttons">
-        <a href="#" target="_blank">GitHub (추가 가능)</a>
+    <div class="card project-card">
+      <h3>Venti Recipe <span class="muted" style="font-size: 16px; font-weight: 500;">| 카페 레시피 관리 PWA</span></h3>
+      <ul>
+        <li><strong>문제 정의</strong> 종이 레시피의 검색 불편과 옵션(당도 등) 적용의 비일관성</li>
+        <li><strong>내 역할</strong> 요구사항 정의, 레시피 데이터 구조 설계, 검색/옵션 흐름 기획</li>
+        <li><strong>해결 방식</strong> JSON 기반 레시피 데이터 표준화 / 모바일 사용성을 고려한 UI 구성</li>
+        <li><strong>결과</strong> 실제 매장 사용을 전제로 한 PWA 형태 설계</li>
+      </ul>
+      <div class="buttons" style="margin-top: 24px;">
+        <a href="#" target="_blank" class="btn-primary">GitHub (추가 가능)</a>
       </div>
     </div>
   </section>
@@ -137,17 +269,14 @@
   <section id="experience">
     <h2>Experience</h2>
 
-    <p><strong>음식점·카페 운영</strong><br/>
-      고객 동선, 피크타임 운영, 직원 교육 등 실제 운영 프로세스를 경험하며 사용자 관점의 문제를 인식
-    </p>
+    <p><strong>음식점·카페 운영</strong></p>
+    <p class="muted">고객 동선, 피크타임 운영, 직원 교육 등 실제 운영 프로세스를 경험하며 사용자 관점의 문제를 인식</p>
 
-    <p><strong>영업(중고차)</strong><br/>
-      고객 니즈 파악과 신뢰 기반 커뮤니케이션 경험을 통해 설득 구조 이해
-    </p>
+    <p><strong>영업(중고차)</strong></p>
+    <p class="muted">고객 니즈 파악과 신뢰 기반 커뮤니케이션 경험을 통해 설득 구조 이해</p>
 
-    <p><strong>응급 이송 업무</strong><br/>
-      절차 준수와 상황 판단이 중요한 현장에서 책임감 있는 대응 경험
-    </p>
+    <p><strong>응급 이송 업무</strong></p>
+    <p class="muted">절차 준수와 상황 판단이 중요한 현장에서 책임감 있는 대응 경험</p>
   </section>
 
   <!-- 6. CONTACT -->
